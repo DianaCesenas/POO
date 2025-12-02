@@ -2,7 +2,7 @@ from model import coches,cochesBD
 import os
 
 def borrarPantalla():
-    os.system("clear")
+    os.system("cls")
 
 def esperarTecla():
     input("\n \t \tOprima tecla para continuar... ")
