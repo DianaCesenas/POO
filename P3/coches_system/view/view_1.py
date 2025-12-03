@@ -13,6 +13,9 @@ class View:
         for widget in ventana.winfo_children():
             widget.destroy()
 
+     def salir(self,ventana):
+        ventana.destroy()
+
     def regresar(self,ventana,tipo):
         regresar=Button(ventana,text=("Regresar"), command= lambda: self.menu_acciones(ventana,tipo))
         regresar.pack(pady=10)
@@ -23,6 +26,12 @@ class View:
 
         autos=Button(ventana,text="Autos",command= lambda: self.menu_acciones(ventana,"Autos"))
         autos.pack(pady=10)
+        camionetas=Button(ventana,text="Camionetas",command=lambda: self.menu_acciones(ventana,"Camionetas"))
+        camionetas.pack(pady=10)
+        camiones=Button(ventana,text="Camiones",command=lambda: self.menu_acciones(ventana,"Camiones"))
+        camiones.pack(pady=10)
+        salir=Button(ventana,text="Salir",command=lambda: self.salir(ventana))
+        salir.pack(pady=10)
 
     def menu_acciones(self,ventana,tipo):
         self.borrarPantalla(ventana)
