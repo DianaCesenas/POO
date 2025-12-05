@@ -19,7 +19,7 @@ class View:
         ventana.destroy()
 
     def regresar(self, ventana, tipo):
-        Button(ventana, text="Regresar", command=lambda: self.menu_acciones(ventana, tipo)).pack(pady=10)
+        Button(ventana, text="Regresar", bg="#3f5df4", command=lambda: self.menu_acciones(ventana, tipo)).pack(pady=10)
 
     def menu_principal(self, ventana):
         self.borrarPantalla(ventana)
@@ -28,7 +28,7 @@ class View:
         Button(ventana, text="Autos", width=20, command=lambda: self.menu_acciones(ventana, "Autos")).pack(pady=10)
         Button(ventana, text="Camionetas", width=20, command=lambda: self.menu_acciones(ventana, "Camionetas")).pack(pady=10)
         Button(ventana, text="Camiones", width=20, command=lambda: self.menu_acciones(ventana, "Camiones")).pack(pady=10)
-        Button(ventana, text="Salir", width=20, bg="red", fg="white", command=lambda: self.salir(ventana)).pack(pady=20)
+        Button(ventana, text="Salir", width=20, bg="#3f5df4", fg="white", command=lambda: self.salir(ventana)).pack(pady=20)
 
     def menu_acciones(self, ventana, tipo):
         self.borrarPantalla(ventana)
@@ -39,7 +39,7 @@ class View:
         Button(ventana, text="Actualizar", width=20, command=lambda: self.cambiar_vehiculos(ventana, tipo)).pack(pady=5)
         Button(ventana, text="Eliminar", width=20, command=lambda: self.borrar_vehiculos(ventana, tipo)).pack(pady=5)
         
-        Button(ventana, text="Regresar al Inicio", command=lambda: self.menu_principal(ventana)).pack(pady=20)
+        Button(ventana, text="Regresar al Inicio",bg="#3f5df4", command=lambda: self.menu_principal(ventana)).pack(pady=20)
 
    
     def insertar_vehiculos(self, ventana, tipo):
@@ -78,7 +78,7 @@ class View:
         else:
             cmd = lambda: controller_1.Controlador.insertar(tipo, marca.get(), color.get(), modelo.get(), velocidad.get(), caballaje.get(), plazas.get())
 
-        Button(ventana, text="Guardar", bg="green", fg="white", command=cmd).pack(pady=15)
+        Button(ventana, text="Guardar", bg="#3f5df4", fg="white", command=cmd).pack(pady=15)
         self.regresar(ventana, tipo)
 
     def _crear_entrada(self, parent, texto, variable, state='normal'):
@@ -172,12 +172,12 @@ class View:
                 else:
                     cmd = lambda: controller_1.Controlador.actualizar(tipo, marca.get(), color.get(), modelo.get(), velocidad.get(), caballaje.get(), plazas.get(), id_val)
 
-                Button(ventana, text="Guardar Cambios", bg="orange", fg="white", command=cmd).pack(pady=15)
+                Button(ventana, text="Guardar Cambios", bg="#3f5df4", fg="white", command=cmd).pack(pady=15)
                 
             else:
                 messagebox.showerror("Error", "ID no encontrado")
 
-        Button(f_buscar, text="Buscar", command=buscar_y_mostrar).pack(side=LEFT)
+        Button(f_buscar, text="Buscar",bg="#3f5df4", command=buscar_y_mostrar).pack(side=LEFT)
         self.regresar(ventana, tipo)
 
   
@@ -198,8 +198,8 @@ class View:
             if datos:
               
                 f_buscar.destroy()
-                Label(ventana, text=f"¿Seguro que deseas eliminar este registro?", fg="red", bg="#93a5fb", font=("Arial", 14)).pack(pady=10)
-                
+                #Label(ventana, text=f"¿Seguro que deseas eliminar este registro?", fg="red", bg="#93a5fb", font=("Arial", 14)).pack(pady=10)
+                messagebox.showwarning("Atencion", "¿Seguro que deseas eliminar este registro?")
                 f_datos = Frame(ventana, bg="#93a5fb")
                 f_datos.pack()
                 
@@ -212,5 +212,5 @@ class View:
             else:
                 messagebox.showerror("Error", "ID no encontrado")
 
-        Button(f_buscar, text="Buscar", command=verificar_y_eliminar).pack(side=LEFT)
+        Button(f_buscar, text="Buscar",bg="#3f5df4", command=verificar_y_eliminar).pack(side=LEFT)
         self.regresar(ventana, tipo)
